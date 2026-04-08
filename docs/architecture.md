@@ -118,7 +118,7 @@ The main loop in `index.ts` manages three boolean flags:
          │  isRecording=false, isBusy=true                          │
          │  1. Stop sox → finalize WAV                              │
          │  2. POST WAV to Whisper → text                           │
-         │  3. POST messages to LLM → stream to stdout             │
+         │  3. POST messages to LLM → stream to stdout              │
          └───┬──────────────────────────────────────────────────────┘
              │ done (or error)
              ▼
