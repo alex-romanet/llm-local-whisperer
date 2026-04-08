@@ -6,7 +6,7 @@
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
-│                        llm-local-whisperer                            │
+│                        llm-local-whisperer                          │
 │                                                                     │
 │   Keypress (Space)                                                  │
 │        │                                                            │
