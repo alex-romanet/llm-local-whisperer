@@ -98,6 +98,9 @@ export function setupUI(): void {
   const rows = process.stdout.rows || 24;
   // Enter alternate screen buffer (like vim/htop) — prevents scrollback bleed
   process.stdout.write('\x1b[?1049h');
+  // Capture mouse/scroll events so the terminal emulator doesn't handle trackpad
+  // scrolling as scrollback (which would reveal pre-app terminal history)
+  process.stdout.write('\x1b[?1000h\x1b[?1006h');
   // Clear screen and home cursor before drawing fixed regions
   process.stdout.write('\x1b[2J\x1b[H');
 
@@ -118,8 +121,8 @@ export function setupUI(): void {
 }
 
 export function teardownUI(): void {
-  // Reset scroll region, clear screen, then leave alternate screen buffer
-  process.stdout.write('\x1b[r\x1b[2J\x1b[H\x1b[?1049l');
+  // Release mouse reporting, reset scroll region, clear screen, leave alternate screen
+  process.stdout.write('\x1b[?1000l\x1b[?1006l\x1b[r\x1b[2J\x1b[H\x1b[?1049l');
 }
 
 /**
